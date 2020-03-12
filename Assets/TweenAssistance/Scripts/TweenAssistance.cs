@@ -119,18 +119,18 @@ namespace Itach.TweenAssistance
         /// <param name="duration"></param>
         /// <param name="ease">DG.Tweening.Ease</param>
         /// <param name="delay"></param>
-        public void Animate(float startValue, float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
+        public void Animate(float startValue, float endValue, float duration, Ease ease = Ease.Linear, float delay = 0, TweenFlag flag = TweenFlag.All)
         {
-            if (useColor != ColorType.None)
+            if (useColor != ColorType.None && (flag & TweenFlag.Color) != 0)
                 AnimateColor(startValue, endValue, duration, ease, delay);
 
-            if (useScale)
+            if (useScale && (flag & TweenFlag.Scale) != 0)
                 AnimateScale(startValue, endValue, duration, ease, delay);
 
-            if (usePosition)
+            if (usePosition && (flag & TweenFlag.Position) != 0)
                 AnimatePosition(startValue, endValue, duration, ease, delay);
 
-            if (useRotation)
+            if (useRotation && (flag & TweenFlag.Rotation) != 0)
                 AnimateRotation(startValue, endValue, duration, ease, delay);
         }
 
@@ -141,18 +141,18 @@ namespace Itach.TweenAssistance
         /// <param name="duration"></param>
         /// <param name="ease">DG.Tweening.Ease</param>
         /// <param name="delay"></param>
-        public void Animate(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
+        public void Animate(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0, TweenFlag flag = TweenFlag.All)
         {
-            if (useColor != ColorType.None)
+            if (useColor != ColorType.None && (flag & TweenFlag.Color) != 0)
                 AnimateColor(endValue, duration, ease, delay);
 
-            if (useScale)
+            if (useScale && (flag & TweenFlag.Scale) != 0)
                 AnimateScale(endValue, duration, ease, delay);
 
-            if (usePosition)
+            if (usePosition && (flag & TweenFlag.Position) != 0)
                 AnimatePosition(endValue, duration, ease, delay);
 
-            if (useRotation)
+            if (useRotation && (flag & TweenFlag.Rotation) != 0)
                 AnimateRotation(endValue, duration, ease, delay);
         }
 
