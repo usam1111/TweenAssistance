@@ -209,14 +209,14 @@ RectTransform:
   m_GameObject: {fileID: 209037410}
   m_LocalRotation: {x: 0, y: 0, z: 0.15988116, w: 0.98713636}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1236117527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.4}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 0}
+  m_AnchoredPosition: {x: 83.77, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209037412
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
+  m_Color: {r: 0.9150943, g: 0.39370865, b: 0.25467247, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -268,19 +268,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3a050604ce5724b9ccaa8742d17aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeOnAwake: 0
-  hasColor: 1
-  useColor: 2
+  inactiveOnAwake: 0
+  haveColor: 1
+  useColor: 0
   startAlpha: 0
   endAlpha: 1
-  StartColor: {r: 0.7924528, g: 0.7924528, b: 0.7924528, a: 1}
-  endColor: {r: 1, g: 1, b: 1, a: 1}
-  useScale: 1
+  startColor: {r: 0.9150943, g: 0.39370865, b: 0.25467247, a: 1}
+  endColor: {r: 0.9150943, g: 0.39370865, b: 0.25467247, a: 1}
+  maskableGraphic: {fileID: 209037412}
+  useScale: 0
   startScale: {x: 0.3, y: 0.3, z: 0.3}
   endScale: {x: 1, y: 1, z: 1}
   usePosition: 0
-  startPosition: {x: 80, y: 0, z: 0}
-  endPosition: {x: 80, y: 0, z: 0}
+  startPosition: {x: 83.77, y: 0, z: 0}
+  endPosition: {x: 83.77, y: 0, z: 0}
   useRotation: 0
   startEulerAngles: {x: -0, y: 0, z: 18.399996}
   endEulerAngles: {x: -0, y: 0, z: 18.399996}
@@ -458,22 +459,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3a050604ce5724b9ccaa8742d17aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeOnAwake: 0
-  hasColor: 1
-  useColor: 0
+  inactiveOnAwake: 0
+  haveColor: 0
+  useColor: 1
   startAlpha: 0
   endAlpha: 1
-  StartColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  useScale: 0
+  maskableGraphic: {fileID: 0}
+  useScale: 1
   startScale: {x: 0.3, y: 0.3, z: 0.3}
   endScale: {x: 1, y: 1, z: 1}
-  usePosition: 0
-  startPosition: {x: 0, y: 0, z: 0}
-  endPosition: {x: 0, y: 0, z: 0}
+  usePosition: 1
+  startPosition: {x: -880, y: -1065, z: 0}
+  endPosition: {x: -880, y: -1065, z: 0}
   useRotation: 0
-  startEulerAngles: {x: 0, y: 0, z: 0}
-  endEulerAngles: {x: 0, y: 0, z: 0}
+  startEulerAngles: {x: -0, y: 0, z: 0}
+  endEulerAngles: {x: -0, y: 0, z: 0}
+--- !u!1 &653070440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653070441}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653070441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653070440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.48, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1949384773}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715589515
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1949384769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -715,22 +748,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3a050604ce5724b9ccaa8742d17aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeOnAwake: 0
-  hasColor: 0
+  inactiveOnAwake: 0
+  haveColor: 0
   useColor: 0
   startAlpha: 0
   endAlpha: 1
-  StartColor: {r: 0, g: 0, b: 0, a: 0}
+  startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0, g: 0, b: 0, a: 0}
-  useScale: 0
+  maskableGraphic: {fileID: 0}
+  useScale: 1
   startScale: {x: 0.3, y: 0.3, z: 0.3}
   endScale: {x: 1, y: 1, z: 1}
-  usePosition: 0
-  startPosition: {x: -2.33, y: 0, z: -3.95}
-  endPosition: {x: -2.33, y: 0, z: -3.95}
-  useRotation: 0
-  startEulerAngles: {x: 0, y: 0, z: 0}
-  endEulerAngles: {x: 0, y: 0, z: 0}
+  usePosition: 1
+  startPosition: {x: -1.52, y: 0, z: -3.95}
+  endPosition: {x: -1.52, y: 0, z: -3.95}
+  useRotation: 1
+  startEulerAngles: {x: -0, y: 0, z: 0}
+  endEulerAngles: {x: -0, y: 0, z: 0}
 --- !u!65 &1949384770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -796,10 +830,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949384768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.33, y: 0, z: -3.95}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.52, y: 0, z: -3.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 653070441}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

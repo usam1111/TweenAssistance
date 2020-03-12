@@ -16,7 +16,7 @@ namespace Itach.TweenAssistance
         {
             TweenAssistance ta = target as TweenAssistance;
 
-            ta.activeOnAwake = EditorGUILayout.Toggle("Active On Awake", ta.activeOnAwake);
+            ta.inactiveOnAwake = EditorGUILayout.Toggle("Inactive On Awake", ta.inactiveOnAwake);
 
             // Color
             if (ta.haveColor)
@@ -38,7 +38,10 @@ namespace Itach.TweenAssistance
                             ta.startColor = EditorGUILayout.ColorField("Start Color", ta.startColor);
                             if (GUILayout.Button("Apply", GUILayout.Width(btnW)))
                             {
-                                ta.SetComponentColor(ta.startColor);
+                                if (ta.haveColor)
+                                {
+                                    ta.maskableGraphic.color = ta.startColor;
+                                }
                             }
                         }
                         using (new EditorGUILayout.HorizontalScope())
@@ -46,7 +49,10 @@ namespace Itach.TweenAssistance
                             ta.endColor = EditorGUILayout.ColorField("End Color", ta.endColor);
                             if (GUILayout.Button("Apply", GUILayout.Width(btnW)))
                             {
-                                ta.SetComponentColor(ta.endColor);
+                                if (ta.haveColor)
+                                {
+                                    ta.maskableGraphic.color = ta.endColor;
+                                }
                             }
                         }
                         break;

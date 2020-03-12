@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Itach.TweenAssistance
 {
@@ -10,7 +11,7 @@ namespace Itach.TweenAssistance
     {
         public enum ColorType { None, Alpha, Color }
 
-        public bool activeOnAwake = false;
+        public bool inactiveOnAwake = false;
 
         // Color
         public bool haveColor;
@@ -19,6 +20,7 @@ namespace Itach.TweenAssistance
         public float endAlpha;
         public Color startColor;
         public Color endColor;
+        public MaskableGraphic maskableGraphic;
 
         // Scale
         public bool useScale = false;
@@ -41,8 +43,7 @@ namespace Itach.TweenAssistance
             useColor = ColorType.None;
             startAlpha = 0f;
             endAlpha = 1f;
-
-            MaskableGraphic maskableGraphic = GetComponent<MaskableGraphic>();
+            maskableGraphic = GetComponent<MaskableGraphic>();
             if (maskableGraphic != null)
             {
                 startColor =
@@ -50,9 +51,8 @@ namespace Itach.TweenAssistance
                 haveColor = true;
             }
             else
-            {
                 haveColor = false;
-            }
+
 
             // Scale
             startScale = Vector3.one * 0.3f;
@@ -71,7 +71,37 @@ namespace Itach.TweenAssistance
 
         private void Awake()
         {
+            if (inactiveOnAwake)
+                gameObject.SetActive(false);
+            
+            // Color
+            switch (useColor)
+            {
+                case ColorType.Alpha:
+                    maskableGraphic = GetComponent<MaskableGraphic>();
+                    maskableGraphic.color = new Color(
+                        maskableGraphic.color.r,
+                        maskableGraphic.color.g,
+                        maskableGraphic.color.b,
+                        startAlpha);
+                    break;
+                case ColorType.Color:
+                    maskableGraphic = GetComponent<MaskableGraphic>();
+                    maskableGraphic.color = startColor;
+                    break;
+            }
 
+            // Scale
+            if (useScale)
+                transform.localScale = startScale;
+
+            // Position
+            if (usePosition)
+                transform.localPosition = startPosition;
+
+            // Rotation
+            if (useRotation)
+                transform.localEulerAngles = startEulerAngles;
         }
 
         #region ContextMenu
@@ -130,14 +160,14 @@ namespace Itach.TweenAssistance
         }
         #endregion ContextMenu
 
+        /*
         public void SetComponentColor(Color color)
         {
             if (haveColor)
             {
-                MaskableGraphic maskableGraphic = GetComponent<MaskableGraphic>();
                 maskableGraphic.color = color;
             }
         }
-        
+        */
     }
 }
