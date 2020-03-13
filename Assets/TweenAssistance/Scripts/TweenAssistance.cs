@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -11,7 +8,7 @@ namespace Itach.TweenAssistance
     {
         public enum ColorType { None, Alpha, Color }
 
-        public bool inactiveOnAwake = true;
+        public bool inactiveOnAwake;
 
         // Color
         public bool haveColor;
@@ -23,24 +20,24 @@ namespace Itach.TweenAssistance
         public MaskableGraphic maskableGraphic;
 
         // Scale
-        public bool useScale = false;
+        public bool useScale;
         public Vector3 startScale;
         public Vector3 endScale;
 
         // Position
-        public bool usePosition = false;
+        public bool usePosition;
         public Vector3 startPosition;
         public Vector3 endPosition;
 
         // Rotation
-        public bool useRotation = false;
+        public bool useRotation;
         public Vector3 startEulerAngles;
         public Vector3 endEulerAngles;
 
         /// <summary>
         /// Automatically inactive on completion of tween
         /// </summary>
-        public bool autoInactiveOnComplete = true;
+        [HideInInspector] public bool autoInactiveOnComplete = true;
 
         private Tween colorTween;
         private Tween scaleTween;
@@ -49,6 +46,8 @@ namespace Itach.TweenAssistance
 
         private void Reset()
         {
+            inactiveOnAwake = true;
+
             // Color
             useColor = ColorType.None;
             startAlpha = 0f;
@@ -64,14 +63,17 @@ namespace Itach.TweenAssistance
                 haveColor = false;
 
             // Scale
-            startScale = Vector3.one * 0.3f;
-            endScale = Vector3.one;
+            useScale = false;
+            startScale = transform.localScale * 0.2f;
+            endScale = transform.localScale;
 
             // Position
+            usePosition = false;
             startPosition =
                 endPosition = transform.localPosition;
 
             // Rotation
+            useRotation = false;
             startEulerAngles =
                 endEulerAngles = transform.localEulerAngles;
         }
@@ -119,6 +121,7 @@ namespace Itach.TweenAssistance
         /// <param name="duration"></param>
         /// <param name="ease">DG.Tweening.Ease</param>
         /// <param name="delay"></param>
+        /// <param name="flag"></param>
         public void Animate(float startValue, float endValue, float duration, Ease ease = Ease.Linear, float delay = 0, TweenFlag flag = TweenFlag.All)
         {
             if (useColor != ColorType.None && (flag & TweenFlag.Color) != 0)
@@ -141,6 +144,7 @@ namespace Itach.TweenAssistance
         /// <param name="duration"></param>
         /// <param name="ease">DG.Tweening.Ease</param>
         /// <param name="delay"></param>
+        /// <param name="flag"></param>
         public void Animate(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0, TweenFlag flag = TweenFlag.All)
         {
             if (useColor != ColorType.None && (flag & TweenFlag.Color) != 0)
@@ -166,6 +170,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateColor(float startValue, float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (useColor == ColorType.None) return;
             ForceActive();
 
             switch (useColor)
@@ -194,6 +199,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateColor(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (useColor == ColorType.None) return;
             ForceActive();
 
             if(useColor != ColorType.None)
@@ -223,6 +229,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateScale(float startValue, float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!useScale) return;
             ForceActive();
             transform.localScale = GetScaleLeap(startValue);
             AnimateScale(endValue, duration, ease, delay);
@@ -237,6 +244,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateScale(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!useScale) return;
             ForceActive();
             scaleTween?.Kill();
             scaleTween = transform.DOScale(GetScaleLeap(endValue), duration).SetEase(ease).SetDelay(delay);
@@ -254,6 +262,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimatePosition(float startValue,  float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!usePosition) return;
             ForceActive();
             transform.localPosition = GetPositionLeap(startValue);
             AnimatePosition(endValue, duration, ease, delay);
@@ -268,6 +277,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimatePosition(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!usePosition) return;
             ForceActive();
             positionTween?.Kill();
             positionTween = transform.DOLocalMove(GetPositionLeap(endValue), duration).SetEase(ease).SetDelay(delay);
@@ -285,6 +295,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateRotation(float startValue,  float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!useRotation) return;
             ForceActive();
             transform.localEulerAngles = GetEulerAnglesLeap(startValue);
             AnimateRotation(endValue, duration, ease, delay);
@@ -299,6 +310,7 @@ namespace Itach.TweenAssistance
         /// <param name="delay"></param>
         public void AnimateRotation(float endValue, float duration, Ease ease = Ease.Linear, float delay = 0)
         {
+            if (!useRotation) return;
             ForceActive();
             rotationTween?.Kill();
             rotationTween = transform.DOLocalRotate(GetEulerAnglesLeap(endValue), duration).SetEase(ease).SetDelay(delay);
