@@ -6,9 +6,9 @@ using DG.Tweening;
 
 public class Sample : MonoBehaviour
 {
-    
-    [SerializeField] private TweenAssistance imageObg;
-    [SerializeField] private TweenAssistance cubeObj;
+
+    [SerializeField] private TweenAssistance imageObg = default;
+    [SerializeField] private TweenAssistance cubeObj = default;
 
 
     IEnumerator Start()
