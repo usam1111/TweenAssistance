@@ -13,10 +13,8 @@ public class Sample : MonoBehaviour
 
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(0.1f);
-
         // Cubu In
-        cubeObj.Animate(1f, 0.5f, Ease.OutQuart);
+        cubeObj.Animate(endValue: 1f, duration: 0.5f, ease: Ease.OutQuart);
 
         yield return new WaitForSeconds(1.0f);
 
