@@ -10,7 +10,6 @@ public class Sample : MonoBehaviour
     [SerializeField] private TweenAssistance imageObg = default;
     [SerializeField] private TweenAssistance cubeObj = default;
 
-
     IEnumerator Start()
     {
         // Cubu In
