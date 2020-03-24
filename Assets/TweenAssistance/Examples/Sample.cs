@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Sample : MonoBehaviour
 {
 
-    [SerializeField] private TweenAssistance imageObg = default;
+    [SerializeField] private TweenAssistance imageObj = default;
     [SerializeField] private TweenAssistance cubeObj = default;
 
     IEnumerator Start()
@@ -23,18 +23,18 @@ public class Sample : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         // Image In
-        imageObg.AnimateColor(1f, 0.5f, Ease.Linear);
-        imageObg.AnimatePosition(1f, 0.5f, Ease.OutQuart);
+        imageObj.AnimateColor(1f, 0.5f, Ease.Linear);
+        imageObj.AnimatePosition(1f, 0.5f, Ease.OutQuart);
 
         yield return new WaitForSeconds(1.0f);
 
-        imageObg.AnimateRotation(1f, 0.5f, Ease.InOutQuad);
+        imageObj.AnimateRotation(1f, 0.5f, Ease.InOutQuad);
 
         yield return new WaitForSeconds(1.0f);
 
         // Image Out
-        imageObg.AnimateColor(0f, 0.5f, Ease.Linear);
-        imageObg.AnimatePosition(2f, 0.5f, Ease.InQuart);
+        imageObj.AnimateColor(0f, 0.5f, Ease.Linear);
+        imageObj.AnimatePosition(2f, 0.5f, Ease.InQuart);
     }
     
 }

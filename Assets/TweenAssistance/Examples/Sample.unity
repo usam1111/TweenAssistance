@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdef76fddc80f744ab42bf54720d80f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageObg: {fileID: 209037414}
+  imageObj: {fileID: 0}
   cubeObj: {fileID: 1949384769}
 --- !u!1 &1236117523
 GameObject:
