@@ -6,14 +6,13 @@
 ![](https://img.shields.io/badge/.NET-4.x-yellow.svg)
 [![](https://img.shields.io/badge/License-MIT-green)](https://github.com/usam1111/TweenAssistance/blob/master/LICENSE)
 
-<!-- 
 ## UnityPackage
-- path
--->
+- [TweenAssistance_v1.0.0.unitypackage](https://github.com/usam1111/TweenAssistance/blob/master/TweenAssistance_v1.0.0.unitypackage)
+  - 別途 [DOTween](http://dotween.demigiant.com/documentation.php) のインポートが必要です。
 
 ## TweenAssistance の概要
 - アニメーションさせる際のコード量を減らすツールです。
-- トゥイーンの開始値（0）と終了値（1）をインスペクタで設定しておいて、コードで0～1を指定します。（0～1の範囲外の数値も可能）
+- トゥイーンの開始値と終了値をインスペクタで設定しておいて、コードで開始値を0、終了値を1とした場合の0～1を指定します。（0～1の範囲外の数値も可能）
 - 下記のトゥイーンに対応しています。
   - maskableGraphic.color
   - maskableGraphic.color.a
@@ -22,6 +21,19 @@
   - transform.localEulerAngles
 - トゥイーン開始時は SetActive(true) が呼ばれ、トゥイーン終了時に値が開始値（0）の場合は SetActive(false) が呼ばれます。
 - DOTween を使ってトゥイーンさせているので、別途DOTweenのインポートが必要です。
+
+## 使用のメリット・デメリット
+
+### メリット
+
+- アクティブ状態のオン・オフの切り替えは、トゥイーンの開始時と終了時に自動で行われる。
+- 位置をトゥイーンさせる際、開始位置や終了位置を変数で持たせるひと手間をインスペクタに入力して済ませられる。
+
+### デメリット
+
+- インスペクタで指定した開始値と終了値を繋ぐ値以外へトゥイーンさせることはできない。
+  - 特にカラーの場合、開始カラーを白、終了カラーを赤にした場合、青へトゥイーンさせることはできない等、自由度が低くなる。
+- パフォーマンスはDOTweenを直接使うよりも少しだけ重い。
 
 ## 使い方
 

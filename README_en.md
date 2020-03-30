@@ -6,10 +6,9 @@
 ![](https://img.shields.io/badge/.NET-4.x-yellow.svg)
 [![](https://img.shields.io/badge/License-MIT-green)](https://github.com/usam1111/TweenAssistance/blob/master/LICENSE)
 
-<!-- 
 ## UnityPackage
-- path
--->
+- [TweenAssistance_v1.0.0.unitypackage](https://github.com/usam1111/TweenAssistance/blob/master/TweenAssistance_v1.0.0.unitypackage)
+  - You need to import [DOTween](http://dotween.demigiant.com/documentation.php) separately.
 
 ## Overview of TweenAssistance
 - It is a tool to reduce the amount of code for animation.
@@ -22,6 +21,19 @@
   - transform.localEulerAngles
 - At the beginning of the tween, SetActive (true) is called, and at the end of the tween, if the value is the start value (0), SetActive (false) is called.
 - Since tween is executed using DOTween, DOTween must be imported separately.
+
+## Advantages and disadvantages
+
+### Advantages
+
+- The on / off switching of the active state is automatically performed at the start and end of the tween.
+- When tweening a position, you can input the start and end position into the inspector without having to do the work of having variables.
+
+### disadvantages
+
+- It is not possible to tween to a value other than the value connecting the start value and the end value specified in the inspector.
+  - Especially in the case of colors, if the start color is white and the end color is red, it is not possible to tween to blue, etc.
+- Performance is just a little heavier than using DOTween directly.
 
 ## How to use
 
